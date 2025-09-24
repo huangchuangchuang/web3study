@@ -68,13 +68,66 @@ func AnswerPointer2() {
 }
 
 // ✅Goroutine
+func ScheduleTasks(tasks []func()) {
+	var wg sync.WaitGroup
+	wg.Add(len(tasks))
+	// 为每个任务启动一个协程
+	for i, task := range tasks {
+		go func(index int, task func()) {
+			defer wg.Done()
 
+			// 记录开始时间
+			start := time.Now()
+
+			// 执行任务
+			task()
+
+			// 记录结束时间并计算耗时
+			end := time.Now()
+			duration := end.Sub(start)
+
+			fmt.Printf("任务 %d 执行完毕，耗时：%v\n", index+1, duration)
+		}(i, task) // 传递索引和任务函数，避免闭包问题
+	}
+
+	// 等待所有任务完成
+	wg.Wait()
+	fmt.Println("所有任务执行完成")
+}
+
+// 示例任务函数
+func task1() {
+	time.Sleep(2 * time.Second)
+	fmt.Println("任务1完成")
+}
+
+func task2() {
+	time.Sleep(1 * time.Second)
+	fmt.Println("任务2完成")
+}
+
+func task3() {
+	time.Sleep(3 * time.Second)
+	fmt.Println("任务3完成")
+}
 func AswerGoroutine() {
 	// 题目 ：设计一个任务调度器，接收一组任务（可以用函数表示），并使用协程并发执行这些任务，同时统计每个任务的执行时间。
 	// 考察点 ：协程原理、并发任务调度。
+	fmt.Println(" < ---------- AnswerGoroutine ---------- >")
+	// 调用任务调度器
+	tasks := []func(){
+		task1,
+		task2,
+		task3,
+	}
+	ScheduleTasks(tasks)
+}
+
+func AswerGoroutine2() {
+
 	// 题目 ：编写一个程序，使用 go 关键字启动两个协程，一个协程打印从1到10的奇数，另一个协程打印从2到10的偶数。
 	// 考察点 ： go 关键字的使用、协程的并发执行。
-	fmt.Println(" < ---------- AnswerGoroutine ---------- >")
+	fmt.Println(" < ---------- AnswerGoroutine2 ---------- >")
 	var wg sync.WaitGroup
 	wg.Add(2)
 	go func() {
@@ -315,6 +368,7 @@ func main() {
 	AnswerPointer()
 	AnswerPointer2()
 	AswerGoroutine()
+	AswerGoroutine2()
 	AswerObjectOriented()
 	AswerObjectInfo()
 	AswerOutputChannelInfo()
