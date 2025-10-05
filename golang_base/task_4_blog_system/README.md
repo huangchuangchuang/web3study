@@ -40,4 +40,4 @@ curl -X POST http://localhost:8080/api/posts \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiZXhwIjoxNzU5Mjc0MjI0fQ.jgy3so6O2mVfvjM6KlRD635OyqSLn_PmM2SpSduw9ew" \
   -d '{"title":"我的博客","content":"博客内容..."}'
- ```
+ ```·
