@@ -20,3 +20,32 @@ go mod github.com/web3study
 
 go get -u gorm.io/driver/mysql
 ```
+
+### solidity_base
+
+#### task_2
+
+```
+# 需要的任务目录
+cd solidity_base/task_2
+# npm 初始化
+npm init -y
+# 安装 Hardhat（推荐）
+npm install --save-dev hardhat
+
+# 安装 OpenZeppelin 合约
+npm install @openzeppelin/contracts
+
+# 安装其他开发工具
+npm install --save-dev @nomiclabs/hardhat-ethers ethers
+# 依赖目录
+node_modules/@openzeppelin/contracts
+# 查看版本
+npm openzeppelin --version
+```
+
+###### SimpleNFT
+```
+npm install
+npx hardhat compile
+```

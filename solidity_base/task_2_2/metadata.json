@@ -1,0 +1,25 @@
+{
+  "name": "Beautiful Digital Art #1",
+  "description": "A stunning piece of digital art created for the Solidity homework assignment",
+  "image": "ipfs://QmYourImageCIDHere/beautiful_art.png",
+  "attributes": [
+    {
+      "trait_type": "Art Style",
+      "value": "Digital"
+    },
+    {
+      "trait_type": "Color Scheme",
+      "value": "Vibrant"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Artist",
+      "value": "Solidity Student"
+    }
+  ],
+  "external_url": "https://your-portfolio-website.com",
+  "animation_url": "ipfs://QmYourAnimationCIDHere/art_animation.mp4"
+}

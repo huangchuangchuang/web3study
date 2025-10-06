@@ -2,3 +2,4 @@
 
 solidity_base/artifacts
 solidity_base/.states/
+solidity_base/.deps/
