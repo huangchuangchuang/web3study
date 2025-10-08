@@ -32,7 +32,7 @@ interface IERC20 {
  */
 contract SimpleToken is IERC20 {
     mapping(address => uint256) private _balances;
-    mapping(address => mapping(address => uint256)) private _allowances;
+    mapping(address => mapping(address => uint256)) private _allowances; // 代扣额度
     
     uint256 private _totalSupply;
     string private _name;
@@ -56,7 +56,6 @@ contract SimpleToken is IERC20 {
         _symbol = symbol_;
         _decimals = decimals_;
         _owner = msg.sender;
-        
         _mint(msg.sender, initialSupply);
     }
     
@@ -106,8 +105,8 @@ contract SimpleToken is IERC20 {
     /**
      * @dev 返回授权额度
      */
-    function allowance(address owner, address spender) public view override returns (uint256) {
-        return _allowances[owner][spender];
+    function allowance(address accountOwner, address spender) public view override returns (uint256) {
+        return _allowances[accountOwner][spender];
     }
     
     /**
@@ -164,12 +163,12 @@ contract SimpleToken is IERC20 {
     /**
      * @dev 授权内部函数
      */
-    function _approve(address owner, address spender, uint256 amount) internal {
-        require(owner != address(0), "SimpleToken: approve from the zero address");
+    function _approve(address ownerAddress, address spender, uint256 amount) internal {
+        require(ownerAddress != address(0), "SimpleToken: approve from the zero address");
         require(spender != address(0), "SimpleToken: approve to the zero address");
         
-        _allowances[owner][spender] = amount;
-        emit Approval(owner, spender, amount);
+        _allowances[ownerAddress][spender] = amount;
+        emit Approval(ownerAddress, spender, amount);
     }
     
     /**
