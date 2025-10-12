@@ -1,0 +1,16 @@
+{
+  "name": "task_2_begging",
+  "version": "1.0.0",
+  "description": "``` ### ✅ 作业3：编写一个讨饭合约 任务目标 1. 使用 Solidity 编写一个合约，允许用户向合约地址发送以太币。 2. 记录每个捐赠者的地址和捐赠金额。 3. 允许合约所有者提取所有捐赠的资金。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0"
+  }
+}

@@ -55,5 +55,7 @@ npm init -y
 
 npm install @openzeppelin/contracts
 
-需要在项目根目录打开，vscode 才不会提示 import 找不到路径
+需要在项目根目录打开，vscode 才不会提示 import 找不到路径.
+
+注：若先从项目根目录打开，再安装，vscode可能还识别不到库。只需关闭后，再度打开就可以了。
 ```
