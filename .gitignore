@@ -5,3 +5,4 @@ solidity_base/.states/
 solidity_base/.deps/
 .vscode/
 **artifacts/
+**node_modules/
