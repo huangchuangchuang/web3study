@@ -49,3 +49,9 @@ npm openzeppelin --version
 npm install
 npx hardhat compile
 ```
+
+#### task_3
+
+```
+npx hardhat --init
+```
