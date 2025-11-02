@@ -47,16 +47,21 @@ contract NftAuction is Initializable, UUPSUpgradeable {
 
     // AggregatorV3Interface internal priceETHFeed;
 
+    // 价格预言机映射; 在区块链和金融领域，feed是"数据源"或"信息流"的意思
     mapping(address => AggregatorV3Interface) public priceFeeds;
 
     function initialize() public initializer {
         admin = msg.sender;
     }
 
+    // 设置价格预言机；tokenAddress 资产地址ETH or ERC20合约地址 _priceFeed 价格预言机合约地址
     function setPriceFeed(
         address tokenAddress,
         address _priceFeed
     ) public {
+        // _priceFeed 转换成调用方法的接口
+        // AggregatorV3Interface priceFeed = AggregatorV3Interface(_priceFeed);
+        // int256 price = priceFeed.latestRoundData();  // ✅ 可以调用
         priceFeeds[tokenAddress] = AggregatorV3Interface(_priceFeed);
     }
 
@@ -204,6 +209,21 @@ contract NftAuction is Initializable, UUPSUpgradeable {
         // 转移剩余的资金到卖家
         // payable(address(this)).transfer(address(this).balance);
         auction.ended = true;
+        
+        // ---------- 补充逻辑 ----------
+        // 如果是 ETH 竞价
+        if (auction.tokenAddress == address(0)) {
+            // 转移 ETH 给卖家
+            payable(auction.seller).transfer(auction.highestBid);
+        }
+        else {
+            // 如果是 ERC20 竞价
+            IERC20(auction.tokenAddress).transfer(
+                auction.seller,
+                auction.highestBid
+            );
+        }
+
     }
 
     function _authorizeUpgrade(address) internal view override {

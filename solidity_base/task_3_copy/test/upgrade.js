@@ -9,7 +9,7 @@ describe("Test upgrade", async function () {
     await deployments.fixture(["depolyNftAuction"]);
 
     const nftAuctionProxy = await deployments.get("NftAuctionProxy");
-    console.log(nftAuctionProxy)
+    console.log("nftAuctionProxy:", nftAuctionProxy)
 
 
     // 1. 部署 ERC721 合约
